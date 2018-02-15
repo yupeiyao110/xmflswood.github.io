@@ -1,3 +1,4 @@
+/* normal 模式下 */
 html {
   font-size: calc(100vh/6.67);
 }
@@ -193,7 +194,7 @@ span {
   width: 490px;
   height: 372.4px;
   overflow: hidden;
-  background-image: url("../images/lips.svg");  
+  background-image: url("~@img/lips.svg");  
   background-size: cover;
 }
 @keyframes a-lip {

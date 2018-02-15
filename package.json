@@ -4,7 +4,7 @@
   "description": "valentine's",
   "main": "index.js",
   "scripts": {
-    "server": "export NODE_ENV=dev && webpack-dev-server --open",
+    "dev": "export NODE_ENV=dev && webpack-dev-server --open",
     "build": "export NODE_ENV=pro && webpack"
   },
   "author": "xmflswood",
@@ -14,6 +14,13 @@
     "babel-loader": "^7.1.2",
     "babel-preset-es2015": "^6.24.1",
     "css-loader": "^0.28.5",
+    "eslint": "^4.17.0",
+    "eslint-config-standard": "^11.0.0-beta.0",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^6.0.0",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1",
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^0.11.2",
     "html-webpack-plugin": "^2.30.1",

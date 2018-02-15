@@ -13,7 +13,7 @@
   right: 30px;
 }
 .wx {
-  background-image: url("../images/wx.png");
+  background-image: url("~@img/wx.png");
   position: absolute;
   top: 10px;
   width: 30px;

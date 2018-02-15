@@ -1,5 +1,5 @@
 // 生日2017/12/20（要改成农历..）
-export function compute() {
+export function compute () {
   let date = new Date()
   let y = date.getFullYear()
   let m = date.getMonth()

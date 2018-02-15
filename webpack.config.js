@@ -1,20 +1,26 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const webpack = require('webpack');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const webpack = require('webpack')
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
+let path = require('path')
 const extractSass = new ExtractTextPlugin({
-    filename: "[name].[contenthash].css",
-    disable: true
-});
-var isPro = process.env.NODE_ENV === 'pro' ? true : false
+  filename: '[name].[contenthash].css',
+  disable: true
+})
+var isPro = process.env.NODE_ENV === 'pro'
 
 module.exports = {
-  entry:  __dirname + '/app/main.js',
+  entry: path.resolve(__dirname, './app/main.js'),
   output: {
-    path: path.resolve(__dirname + '/public'),
+    path: path.resolve(__dirname, 'public'),
     publicPath: isPro ? './public/' : '',
     filename: 'js/[name].js',
-    chunkFilename: 'js/async/[name].js'
+    chunkFilename: path.join('', './js/async/[name].js')
+  },
+  resolve: {
+    alias: {
+      '@img': path.resolve(__dirname, './app/images'),
+      '@css': path.resolve(__dirname, './app/css')
+    }
   },
   devServer: {
     contentBase: './public',
@@ -25,14 +31,19 @@ module.exports = {
     rules: [
       {
         test: /(\.js)$/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: [
-              "es2015"
-            ]
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: [
+                'es2015'
+              ]
+            }
+          },
+          {
+            loader: 'eslint-loader'
           }
-        },
+        ],
         exclude: /node_modules/
       },
       {
@@ -51,27 +62,27 @@ module.exports = {
         test: /\.scss$/,
         use: extractSass.extract({
           use: [{
-            loader: "css-loader",
+            loader: 'css-loader',
             options: {
               minimize: isPro
             }
           }, {
-            loader: "sass-loader"
+            loader: 'sass-loader'
           }],
           // use style-loader in development
-          fallback: "style-loader"
+          fallback: 'style-loader'
         })
       },
       {
         test: /\.css$/,
         use: [
           {
-            loader: "style-loader",
+            loader: 'style-loader',
             options: {
               minimize: isPro
             }
           }, {
-            loader: "css-loader",
+            loader: 'css-loader',
             options: {
               minimize: isPro
             }
@@ -89,8 +100,8 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: __dirname + "/app/index.html",
-      filename: isPro ? __dirname + '/index.html' : 'index.html'
+      template: path.resolve(__dirname, './app/index.html'),
+      filename: isPro ? path.resolve(__dirname, './index.html') : 'index.html'
     }),
     extractSass,
     new webpack.optimize.UglifyJsPlugin({

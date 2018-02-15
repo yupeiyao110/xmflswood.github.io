@@ -1,11 +1,12 @@
 /* eslint-disable spaced-comment */
 /* global define */
+let isPro = process.env.NODE_ENV === 'pro'
+// let fastType =
 ;(function (root, factory) {
   if (typeof define === 'function' && define.amd) define(factory)
   else if (typeof exports === 'object') module.exports = factory()
   else root.typish = factory()
 }(this, function () {
-
   var Typish = typish
 
   /***
@@ -333,7 +334,9 @@
       speed *= this._speed
     } else {
       speed = Math.floor(Math.random() * (150 - 50 + 1)) + 50
-      // speed = 0;
+      if (!isPro) {
+        speed = 0
+      }
     }
 
     var self = this
@@ -456,5 +459,4 @@
         .replace(/\s{2,}/g, ' ')
     }
   }
-
 }))

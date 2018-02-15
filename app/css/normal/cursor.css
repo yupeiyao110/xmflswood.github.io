@@ -1,3 +1,4 @@
+/* typewriter 光标 */
 #typer:after {
   content: '';
   display: inline-block;
