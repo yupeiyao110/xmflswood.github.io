@@ -15,6 +15,8 @@ Refer to: <a href="https://github.com/hackerzhou/Love">hackerzhou</a>
 ## 效果展示
 <p align="center">
   <img src="./demo/heart.png" width="350"/>
+</p>
+<p align="center">
   <img src="./demo/birthday.png" width="350"/>
 </p>
 
